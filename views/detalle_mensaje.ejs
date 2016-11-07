@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.min.css">
+    <meta charset="UTF-8">
+    <title>Entrega3</title>
+</head>
+<body>
+<% include nav.ejs %>
+
+<div class="container">
+    <div class="row">
+        <h3><b><%= usuario.username%></b> dijo: </h3>
+        <div class="col s8 offset-s2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <p><%= mensaje.cuerpo %></p>
+                </div>
+                <div class="card-action">
+                    <a href="/mensajes/comentar/<%= mensaje._id %>">Comentar</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <h4>Comentarios: </h4>
+            <ul class="collection">
+                <% mensaje.comentarios.forEach(function(comentario) { %>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">comment</i>
+                        <span class="title"><b><%= comentario.texto_comentario %></b></span>
+                        <p><%= comentario.creado %></p>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/materialize/dist/js/materialize.min.js">
+</script>
+</body>
+</html>

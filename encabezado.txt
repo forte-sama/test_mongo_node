@@ -1,0 +1,14 @@
+Desarrollar una aplicación utilizando MongoDB para registrar 
+y analizar los comentarios realizados a mensajes publicados 
+por usuarios.
+
+La aplicación debe cumplir los siguientes requerimientos:
+
++ Permitir a cada usuario publicar un mensaje.
+
++ Permitir que otros usuarios comenten cualquier mensaje publicado.
+
++ Tener una opción donde pueda listar los 5 mensajes más comentados.
+
++ Tener una opción para obtener las palabras más comentadas y 
+  poder consultar los mensajes donde fueron utilizadas las mismas.
