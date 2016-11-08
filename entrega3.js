@@ -137,9 +137,13 @@ mongo.connect('mongodb://localhost:27017/entrega3', (error,db) => {
         var mapFunc = function() {
             var palabras_cuerpo = this.cuerpo.split(' ');
 
-            for(var i=0; i<palabras_cuerpo.length; i++) {
-                emit(palabras_cuerpo[i],1);
-            }
+            this.comentarios.forEach(function(comentario) {
+                var palabras_comentario = comentario.texto_comentario.split(' ');
+
+                for(var i=0; i<palabras_comentario.length; i++) {
+                    emit(palabras_comentario[i],1);
+                }
+            });
         };
 
         var redFunc = function(key,values) {
@@ -218,7 +222,7 @@ mongo.connect('mongodb://localhost:27017/entrega3', (error,db) => {
         var targetPalabra = req.params.palabra_clave;
 
         db.collection('mensajes').find({
-            cuerpo: {
+            "comentarios.texto_comentario": {
                 $regex: new RegExp("(.*)"+targetPalabra+"(.*)",'i')
             }
         }).toArray(function(er,mensajesEncontrados) {
